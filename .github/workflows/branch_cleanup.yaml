@@ -1,0 +1,21 @@
+name: Branch Cleanup
+
+on:
+  schedule:
+    - cron: '0 0 1 */1 *'  # Run the workflow on the 1st day of every month
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        repository: mnwaokeafor/myappsample
+        ref: main  # Specify the branch you want to target
+
+    - name: Run Cleanup Script
+      run: |
+        chmod +x ./path/to/MermaidTutorials/cleanTest.sh
+        ./path/to/MermaidTutorials/cleanTest.sh
